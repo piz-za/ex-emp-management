@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.form.InsertAdministratorForm;
 import com.example.service.AdministratorService;
 
+/**
+ * 管理者関連のコントローラークラス
+ */
 @Controller
 @RequestMapping("/")
 public class AdministratorController {
@@ -15,11 +18,10 @@ public class AdministratorController {
     @Autowired
     private AdministratorService administratorService;
 
-    /*管理者登録画面にフォワードするメソッド
-     * 
+    /**
+     * 管理者登録画面にフォワードするメソッド
      * @return administrator/insert.htmlに遷移
      */
-
     @GetMapping("/toInsert")
     public String toInsert(InsertAdministratorForm form){
         return "administrator/insert";

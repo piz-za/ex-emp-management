@@ -10,16 +10,21 @@ import org.springframework.stereotype.Repository;
 
 import com.example.domain.Employee;
 
+
+/**
+ * 従業員のリポジトリクラス
+ */
 @Repository
 public class EmployeeRepository {
 
-    /*
-     * オブジェクトへの参照情報をSpringFramework から注⼊してもらうようにする
-     */
     @Autowired
     private NamedParameterJdbcTemplate template;
 
 
+    /**
+     * RowMapperのフィールド部分をラムダ式で定義
+     * @return 結果をjavaオブジェクトに変換し格納
+     */
     public static final RowMapper<Employee> EMPLOYEE_ROW_MAPPER = (rs, i) -> {
         Employee employee = new Employee();
         employee.setId(rs.getInt("id"));
@@ -37,7 +42,7 @@ public class EmployeeRepository {
         return employee;
     };
 
-    /*
+    /**
      * 全件検索を行う(リポジトリのフィールドが検索項目)
      * (1 件も存在しない場合は null を返す)
      * @return 全従業員一覧
@@ -51,12 +56,10 @@ public class EmployeeRepository {
             return null;
         }
         return employeesList;
-
     }
 
-    /*
+    /**
      * 主キーから従業員の情報を取得するメソッド
-     * 
      * @return 主キーで指定した従業員の情報
      */
     public Employee load(Integer id) {
@@ -70,9 +73,8 @@ public class EmployeeRepository {
         return employee;
     }
 
-    /*
+    /**
      * idを除いた従業員情報の全てのカラムを更新するメソッド
-     * 
      * @return 主キーで指定した従業員の情報
      */
     public void update(Employee employee) {

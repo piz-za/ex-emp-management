@@ -1,6 +1,6 @@
 package com.example.domain;
 
-/*
+/**
  * 管理者クラス
  */
 public class Administrator {
@@ -9,15 +9,9 @@ public class Administrator {
     private String mailAddress;
     private String password;
     
-    /*
-     * 引数のないコンストラクタ
-     */
     public Administrator(){
     }
 
-    /*
-     * すべてのフィールドを引数に取るコンストラクタ
-     */
     public Administrator(Integer id, String name, String mailAddress, String password) {
         this.id = id;
         this.name = name;
@@ -25,10 +19,6 @@ public class Administrator {
         this.password = password;
     }
 
-    /*
-     * toString()メソッドのオーバライド
-     * @return フィールド変数に格納されている情報を返す
-     */
     @Override
     public String toString() {
         return "Administrator [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password=" + password

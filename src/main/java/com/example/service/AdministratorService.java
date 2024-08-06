@@ -6,6 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.repository.AdministratorRepository;
 
+
+/**
+ * 管理者のサービスクラス
+ */
 @Service
 @Transactional
 public class AdministratorService {

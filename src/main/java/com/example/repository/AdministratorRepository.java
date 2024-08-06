@@ -9,13 +9,16 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 import com.example.domain.Administrator;
 
+
+/**
+ * 管理者のリポジトリクラス
+ */
 @Repository
 public class AdministratorRepository {
 
-    /*
+    /**
      * RowMapperのフィールド部分をラムダ式で定義
-     * 
-     * @return 検索結果
+     * @return 結果をjavaオブジェクトに変換し格納
      */
     public static final RowMapper<Administrator> ADMINISTRATOR_ROW_MAPPER = (rs, i) -> {
         Administrator administrator = new Administrator();
@@ -26,15 +29,11 @@ public class AdministratorRepository {
         return administrator;
     };
 
-    /*
-     * オブジェクトへの参照情報をSpringFramework から注⼊してもらうようにする
-     */
     @Autowired
     private NamedParameterJdbcTemplate template;
 
-    /*
+    /**
      * idを除く管理者情報を挿入するメソッド
-     * 
      */
     public void insert(Administrator administrator) {
 
@@ -50,13 +49,11 @@ public class AdministratorRepository {
 
     }
 
-    /*
+    /**
      * メールアドレスとパスワードから管理者情報を取得する
      * 1 件も存在しない場合は null を返す
-     * 
      * @return 管理者情報(1件)
      */
-
     public Administrator findByMailAddressAndPassword(String mailAddress, String password) {
         SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("srmail", mailAddress)
