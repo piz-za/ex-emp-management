@@ -72,13 +72,10 @@ public class AdministratorController {
      */
     @PostMapping("/login")
     public String login(LoginForm form,Model model){
-        Administrator administrator=new Administrator();
-        administrator.setMailAddress(form.getMailAddress());
-        administrator.setPassword(form.getPassword());
-        System.out.println(administrator);
 
-        if(administratorService.login(administrator.getMailAddress(),
-        administrator.getPassword())!=null){
+        Administrator administrator=administratorService.login(form.getMailAddress(),form.getPassword());
+
+        if(administrator!=null){
             session.setAttribute("administratorName",administrator.getMailAddress());
             return "redirect:/employee/showList";
         }else{
