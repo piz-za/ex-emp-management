@@ -20,7 +20,6 @@ public class EmployeeRepository {
     @Autowired
     private NamedParameterJdbcTemplate template;
 
-
     /**
      * RowMapperのフィールド部分をラムダ式で定義
      * @return 結果をjavaオブジェクトに変換し格納
