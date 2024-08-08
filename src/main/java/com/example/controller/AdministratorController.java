@@ -13,6 +13,8 @@ import com.example.form.InsertAdministratorForm;
 import com.example.form.LoginForm;
 import com.example.service.AdministratorService;
 
+import jakarta.servlet.http.HttpSession;
+
 
 
 /**
@@ -24,6 +26,9 @@ public class AdministratorController {
 
     @Autowired
     private AdministratorService administratorService;
+
+    @Autowired
+    private HttpSession session;
     /**
      * 管理者登録画面にフォワードするメソッド
      * @return administrator/insert.htmlに遷移
@@ -43,7 +48,6 @@ public class AdministratorController {
      */
     @PostMapping("/insert")
     public String insert(@ModelAttribute InsertAdministratorForm form){
-        System.out.println(form);
         Administrator administrator=new Administrator();
         administrator.setName(form.getName());
         administrator.setMailAddress(form.getMailAddress());
@@ -61,4 +65,25 @@ public class AdministratorController {
         return "administrator/login";
     }
 
+    /**
+     * ログイン画面にフォワードするメソッド
+     * @param form ログイン画面の情報
+     * @return administrator/login.htmlかadministrator/employee/showListに遷移
+     */
+    @PostMapping("/login")
+    public String login(LoginForm form,Model model){
+        Administrator administrator=new Administrator();
+        administrator.setMailAddress(form.getMailAddress());
+        administrator.setPassword(form.getPassword());
+        System.out.println(administrator);
+
+        if(administratorService.login(administrator.getMailAddress(),
+        administrator.getPassword())!=null){
+            session.setAttribute("administratorName",administrator.getMailAddress());
+            return "redirect:/employee/showList";
+        }else{
+            model.addAttribute("errorMessage", "メールアドレスまたはパスワードが不正です。");
+            return "administrator/login";
+        }
+    }
 }
