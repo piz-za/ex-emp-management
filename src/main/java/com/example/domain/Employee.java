@@ -1,7 +1,8 @@
 package com.example.domain;
 
 import java.util.Date;
-/*
+
+/**
  * 従業員クラス
  */
 public class Employee {
@@ -18,11 +19,6 @@ public class Employee {
     private String characteristics;
     private Integer dependentsCount;
 
-    /*
-     * toString()メソッドのオーバライド
-     * @return フィールド変数に格納されている情報を返す
-     */
-
     @Override
     public String toString() {
         return "Employee [id=" + id + ", name=" + name + ", image=" + image + ", gender=" + gender + ", hireDate="
@@ -31,15 +27,9 @@ public class Employee {
                 + ", dependentsCount=" + dependentsCount + "]";
     }
 
-    /*
-     * 引数のないコンストラクタ
-     */
     public Employee() {
     }
 
-    /*
-     * すべてのフィールドを引数に取るコンストラクタ
-     */
     public Employee(Integer id, String name, String image, String gender, Date hireDate, String mailAddress,
             String zipCode, String address, String telephone, Integer salary, String characteristics,
             Integer dependentsCount) {
