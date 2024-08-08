@@ -38,8 +38,8 @@ public class AdministratorController {
      * 管理者登録画面の入力内容をDBに登録するために
      * 入力内容をAdministratorクラスのオブジェクトにコピーし、
      * DB登録メソッドを呼び出すメソッド
-     * @param form
-     * @return
+     * @param form ブラウザで入力された管理者情報
+     * @return administrator/login.htmlに遷移
      */
     @PostMapping("/insert")
     public String insert(@ModelAttribute InsertAdministratorForm form){

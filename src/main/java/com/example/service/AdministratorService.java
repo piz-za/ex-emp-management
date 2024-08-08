@@ -19,7 +19,7 @@ public class AdministratorService {
     /**
      * ブラウザで入力された管理者情報をDBに登録する管理者リポジトリクラスのメソッドを呼び出す
      * メソッド
-     * @param administrator
+     * @param administrator 管理者情報
      */
     public void insert(Administrator administrator){
         administratorRepository.insert(administrator);

@@ -34,6 +34,7 @@ public class AdministratorRepository {
 
     /**
      * idを除く管理者情報を挿入するメソッド
+     * @param administrator 管理者情報
      */
     public void insert(Administrator administrator) {
 
