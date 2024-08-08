@@ -42,7 +42,7 @@ public class AdministratorRepository {
                 .addValue("insmail", administrator.getMailAddress())
                 .addValue("inspassword", administrator.getPassword());
 
-        String sql = "INSERT INTO administrators "
+        String sql = "INSERT INTO administrators (name, mail_address, password) "
                 + "VALUES(:insname,:insmail,:inspassword)";
 
         template.update(sql, param);

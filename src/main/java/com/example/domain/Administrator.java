@@ -1,6 +1,6 @@
 package com.example.domain;
 
-/**
+/** 
  * 管理者クラス
  */
 public class Administrator {
